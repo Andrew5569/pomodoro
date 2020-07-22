@@ -1,14 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
-import "react-circular-progressbar/dist/styles.css";
 import useInterval from "./use-interval";
+import { useWindowSize } from "./window-size.hook";
+import "react-circular-progressbar/dist/styles.css";
+import "./styles.css";
 
 const defaultTime = 25 * 60;
 
 function App() {
+  const { height, width } = useWindowSize();
   const [timer, setTimer] = useState(defaultTime);
   const [enabled, setEnabled] = useState(false);
   const alarm = new Audio("/alarm.mp3");
+
+  const timerSize = Math.min(height - 16, width - 16, 600);
 
   useEffect(() => {
     if (timer === 0) {
@@ -42,7 +47,7 @@ function App() {
 
   return (
     <div>
-      <div style={{ width: 600, height: 600, margin: "16px auto" }}>
+      <div style={{ width: timerSize, height: timerSize, margin: "16px auto" }}>
         <CircularProgressbar
           valueStart={100}
           value={percentage}
