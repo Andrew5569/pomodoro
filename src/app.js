@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
-import useInterval from "./use-interval";
+import useInterval from "./interval.hook";
 import { useWindowSize } from "./window-size.hook";
 import "react-circular-progressbar/dist/styles.css";
 import "./styles.css";
